@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/login.css">
+    <style>
+        .login-card .form-control {
+            margin-bottom: 0;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+        <div class="card login-card">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="../static/assets/images/ss.jpg" alt="login" class="login-card-img">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+
+                        <div class="brand-wrapper" style="text-align: center">
+                            <img src="../static/assets/images/amaLogo.png" style="height: 70px;" alt="logo"
+                                 class="logo">
+                        </div>
+
+                        <div th:if="${response}">
+                            <div th:text="${response.getMessage()}" class="alert alert-primary" role="alert">
+                            </div>
+                        </div>
+                        <p class="login-card-description">Qeydiyyat Linki</p>
+                        <form method="post" action="#" th:action="@{/apply}" th:object="${applicant}">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Ad</label>
+                                <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Ad">
+                                <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surname" class="sr-only">Soyad</label>
+                                <input class="form-control" type="text" th:field="*{surname}" id="surname"
+                                       placeholder="Soyad">
+                                <p class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fathername" class="sr-only">Ata adı</label>
+                                <input class="form-control" type="text" th:field="*{fatherName}" id="fathername"
+                                       placeholder="Ata adı">
+                                <p class="error" th:if="${#fields.hasErrors('fatherName')}"
+                                   th:errors="*{fatherName}"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="sr-only">E-poçt</label>
+                                <input class="form-control" type="email" th:field="*{email}" id="email"
+                                       placeholder="E-poçt">
+                                <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="sr-only">Telefon</label>
+                                <input class="form-control" type="text" th:field="*{number}" id="phone"
+                                       placeholder="Telefon">
+                                <p class="error" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
+                            </div>
+
+                            <input class="btn btn-block login-btn mb-4" type="submit"
+                                   value="Göndər">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
